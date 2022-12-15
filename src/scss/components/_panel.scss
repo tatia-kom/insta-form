@@ -223,6 +223,12 @@
 
   @media (max-width: 767px) {
     padding: 12px 0 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: 1000;
   }
 
   &__label {
@@ -254,6 +260,14 @@
       align-items: center;
       margin: 0 16px;
       width: 100%;
+
+      .formList {
+        width: auto;
+      }
+      .formList, .send {
+        display: none;
+        padding: 14px 26px;
+      }
     }
   }
 

@@ -111,7 +111,8 @@ $(document).ready(function() {
                 setProgressBar(parseInt(100/questionsAmount*(questionsStep + 1)));
                 $('.panel__sale').text('Ваша скидка 6%');
                 $('.mobilePrev').attr('data-step', '4');
-                $('.mobileNext').removeClass('formList').addClass('to').attr('data-step', '6');
+                $('.panel-progress__mobile .formList').hide();
+                $('.mobileNext').removeClass('formList').addClass('to').attr('data-step', '6').show();
                 break;
             }
             case 6: {
@@ -121,7 +122,9 @@ $(document).ready(function() {
                 $('.panel__soc').removeClass('mobile-hidden');
                 $('.panel-progress__mobile .panel__sale').show();
                 $('.mobilePrev').attr('data-step', '5');
-                $('.mobileNext').text('Далее').removeClass('to').addClass('formList').css({width: 'auto'});
+                $('.mobileNext').hide();
+                $('.panel-progress__mobile .send').hide();
+                $('.panel-progress__mobile .formList').show();
                 break;
             }
             case 7: {
@@ -130,7 +133,8 @@ $(document).ready(function() {
                 $('.panel__soc').addClass('mobile-hidden');
                 $('.panel-progress__mobile .panel__sale').hide();
                 $('.mobilePrev').attr('data-step', '6');
-                $('.mobileNext').text('Отправить запрос').removeClass('formList').css({width: '100%'});
+                $('.panel-progress__mobile .formList').hide();
+                $('.panel-progress__mobile .send').show();
                 setProgressBar(99);
                 break;
             }
@@ -218,6 +222,10 @@ $(document).ready(function() {
             if (key !== 'tgName' && key !== 'vkLink' && key !== 'waNumber') {
                 $('.form-list').append('<div class="panel-content__radio"><input type="radio" disabled checked /><label>' + dataText[key][value] + '</label></div>');
             }
+            else {
+                if (value)
+                    $('.form-list').append('<div class="panel-content__radio"><input type="radio" disabled checked /><label>Связь: ' + value + '</label></div>');
+            }
         });
 
         owl.trigger('next.owl.carousel');
@@ -235,15 +243,18 @@ $(document).ready(function() {
 
             switch (key) {
                 case 'tgName': {
-                    message += '%0AТелеграмм для связи: <b>' + value + '</b>%0A';
+                    if (value)
+                        message += '%0AТелеграмм для связи: <b>' + value + '</b>%0A';
                     break;
                 }
                 case 'vkLink': {
-                    message += '%0AVK для связи: <b>' + value + '</b>%0A';
+                    if (value)
+                        message += '%0AVK для связи: <b>' + value + '</b>%0A';
                     break;
                 }
                 case 'waNumber': {
-                    message += '%0AWhatsApp для связи: <b>' + value + '</b>%0A';
+                    if (value)
+                        message += '%0AWhatsApp для связи: <b>' + value + '</b>%0A';
                     break;
                 }
                 default: {
@@ -257,6 +268,8 @@ $(document).ready(function() {
             url: 'https://api.telegram.org/bot5880236205:AAEiBhp8Rk8FWKAd3SdNdg0VAjsK_0ReQok/sendMessage?chat_id=5426515959&parse_mode=html&text='+message,
             success: function(response) {
                 if (response.ok) {
+                    $('.panel-progress__mobile .mobilePrev').hide();
+                    $('.panel-progress__mobile .send').hide();
                     setProgressBar(100);
                     owl.trigger('to.owl.carousel', 8);
                 }
