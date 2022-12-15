@@ -7,6 +7,12 @@
   align-items: center;
   overflow: hidden;
 
+  &.mobile-hidden {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
   @media (max-width: 1199px) {
     width: 100%;
     height: auto;
@@ -32,7 +38,11 @@
     background: url('../img/main-image.png') no-repeat center;
     background-size: contain;
     transition: 0.5s;
+    max-height: 482px;
 
+    @media (min-width: 1950px) {
+      margin-top: auto;
+    }
     @media (max-width: 1199px) {
       height: 200px;
     }

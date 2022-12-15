@@ -45,6 +45,7 @@ $(document).ready(function() {
         $('.reviews__text').removeClass('hidden');
         $('.reviews__title').removeClass('hidden');
         $('.panel__sale').removeClass('active');
+        $('.reviews').removeClass('mobile-hidden');
     }
 
     // carousel
@@ -65,7 +66,7 @@ $(document).ready(function() {
         owl.trigger('to.owl.carousel', step);
     });
 
-    owl.on('change.owl.carousel', function(event) {
+    owl.on('change.owl.carousel', function() {
         $('.panel__scroll').scrollTop(0);
     });
 
@@ -136,6 +137,7 @@ $(document).ready(function() {
         $('.reviews__image').addClass('move');
         $('.panel-progress').removeClass('hidden');
         $('.panel__sale').addClass('active');
+        $('.reviews').addClass('mobile-hidden');
     });
 
     $('.goToStart').click(function() {
@@ -188,16 +190,25 @@ $(document).ready(function() {
         }
     });
 
+    $('.panel-content__input').on('keyup', '.error', function() {
+        $('.panel-content__input input').removeClass('error');
+    });
+
     $('body').on('click', '.formList', function() {
         var formData = form.serializeArray().reduce(function(obj, item) {
             obj[item.name] = item.value;
             return obj;
         }, {});
 
+        if (!formData.tgName && !formData.vkLink && !formData.waNumber) {
+            $('.panel-content__input input').addClass('error');
+            return;
+        }
+
         $('.form-list').html('');
         Object.keys(formData).forEach(function (key) {
             var value = formData[key];
-            if (key !== 'tgName' && key !== 'vkLink') {
+            if (key !== 'tgName' && key !== 'vkLink' && key !== 'waNumber') {
                 $('.form-list').append('<div class="panel-content__radio"><input type="radio" disabled checked /><label>' + dataText[key][value] + '</label></div>');
             }
         });
@@ -214,16 +225,22 @@ $(document).ready(function() {
 
         Object.keys(formData).forEach(function (key) {
             var value = formData[key];
-            if (key !== 'tgName' && key !== 'vkLink') {
-                message += dataText[key][value] + '%0A';
-            }
-            else {
-                message += '%0A';
-                if (key == 'tgName') {
-                    message += 'Телеграмм для связи: <b>' + value + '</b>%0A';
+
+            switch (key) {
+                case 'tgName': {
+                    message += '%0AТелеграмм для связи: <b>' + value + '</b>%0A';
+                    break;
                 }
-                else {
-                    message += 'VK для связи: <b>' + value + '</b>';
+                case 'vkLink': {
+                    message += '%0AVK для связи: <b>' + value + '</b>%0A';
+                    break;
+                }
+                case 'waNumber': {
+                    message += '%0AWhatsApp для связи: <b>' + value + '</b>%0A';
+                    break;
+                }
+                default: {
+                    message += dataText[key][value] + '%0A';
                 }
             }
         });

@@ -15,7 +15,8 @@
     color: $titleColor;
 
     @media (max-width: 767px) {
-      font-size: 20px;
+      font-family: $fontBold;
+      font-size: 24px;
       line-height: 28px;
     }
   }
@@ -58,6 +59,7 @@
       padding-left: 40px;
       padding-top: 3px;
       display: block;
+      cursor: pointer;
 
       @media (max-width: 767px) {
         font-size: 14px;
@@ -73,6 +75,7 @@
         top: 0;
         background: #EBEBEB;
         border-radius: 50%;
+        transition: 0.3s;
       }
 
       &:after {
@@ -85,6 +88,7 @@
         top: 1px;
         background: #FFF;
         border-radius: 50%;
+        transition: 0.3s;
       }
     }
 
@@ -92,7 +96,8 @@
       display: none;
     }
 
-    input:checked + label {
+    input:checked + label,
+    label:hover {
       &:before {
         background: linear-gradient(49.24deg, #FC9025 20.87%, #D92E7B 72.97%, #A224BC 108.62%);
         border-color: #FFF;
@@ -145,6 +150,10 @@
       }
       @media (max-width: 767px) {
         width: 100%;
+      }
+
+      &.error {
+        border: 1px solid red;
       }
     }
 

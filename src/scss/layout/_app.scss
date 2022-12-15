@@ -83,10 +83,34 @@ footer {
     line-height: 19px;
     padding: 20px 60px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 
     @media (max-width: 767px) {
         width: 100%;
         text-align: center;
+    }
+
+    &:hover:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        background: -webkit-gradient(linear, left top, right top, color-stop(10%, hsla(0, 0%, 100%, .1)), color-stop(20%, hsla(0, 0%, 100%, .2)), to(hsla(0, 0%, 100%, .6)));
+        background: linear-gradient(90deg, hsla(0, 0%, 100%, .1) 10%, hsla(0, 0%, 100%, .2) 20%, hsla(0, 0%, 100%, .6));
+        width: 20px;
+        -webkit-transform: skewX(-45deg);
+        transform: skewX(-45deg);
+        left: -20%;
+        -webkit-transition: all .6s ease;
+        transition: all .6s ease;
+        -webkit-animation-name: blick;
+        animation-name: blick;
+        -webkit-animation-duration: 6s;
+        animation-duration: 6s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count:infinite
     }
 }
 
@@ -141,5 +165,17 @@ footer {
 
     to {
         background-position:20px 20px
+    }
+}
+
+@-webkit-keyframes blick {
+    15%, to {
+        left:110%
+    }
+}
+
+@keyframes blick {
+    15%, to {
+        left:110%
     }
 }
