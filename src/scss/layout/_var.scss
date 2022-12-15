@@ -1,0 +1,38 @@
+//fonts
+$font: 'TT Norms Regular';
+$font500: 'TT Norms Medium';
+$fontBold: 'TT Norms Bold';
+$font800: 'Carmen Sans ExtraBold';
+
+//colors
+
+$titleColor: #454649;
+$textColor: #707070;
+
+$buttonGradient: linear-gradient(49.24deg, #FC9025 20.87%, #D92E7B 72.97%, #A224BC 108.62%);
+
+//media
+
+$md: 1199px;
+$sm: 991px;
+$xs: 767px;
+
+// mixins
+
+@mixin placeholderColor($color) {
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+  &::placeholder {
+    color: $color;
+  }
+}

@@ -1,0 +1,145 @@
+@import "layout/var";
+
+html, body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100%;
+    background: #FDF9F8;
+    color: $textColor;
+}
+
+p {
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-weight: normal;
+}
+header, footer, section, div, span, p, button, a, input, textarea, form {
+    box-sizing: border-box;
+}
+
+button,input,textarea,select{
+    outline: none;
+}
+button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:focus {
+    outline: none;
+}
+
+img {
+    display: block;
+}
+
+form {
+    margin: 0;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.main {
+    display: flex;
+    height: 100vh;
+
+    @media (max-width: 1199px) {
+        flex-direction: column;
+    }
+}
+.button {
+    display: inline-block;
+    background: $buttonGradient;
+    border: 2px solid #FFFFFF;
+    box-shadow: 10px 20px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    color: #FFF;
+    font-family: $font500;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 20px 60px;
+    cursor: pointer;
+
+    @media (max-width: 767px) {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@-webkit-keyframes move-arrow {
+    0% {
+        -webkit-transform: translate(0);
+        transform:translate(0)
+    }
+
+    50% {
+        -webkit-transform: translateY(60%);
+        transform:translateY(60%)
+    }
+
+    to {
+        -webkit-transform: translate(0);
+        transform:translate(0)
+    }
+}
+
+@keyframes move-arrow {
+    0% {
+        -webkit-transform: translate(0);
+        transform:translate(0)
+    }
+
+    50% {
+        -webkit-transform: translateY(60%);
+        transform:translateY(60%)
+    }
+
+    to {
+        -webkit-transform: translate(0);
+        transform:translate(0)
+    }
+}
+
+@-webkit-keyframes move {
+    0% {
+        background-position:0 0
+    }
+
+    to {
+        background-position:20px 20px
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position:0 0
+    }
+
+    to {
+        background-position:20px 20px
+    }
+}

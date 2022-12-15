@@ -1,0 +1,320 @@
+.panel {
+  width: 35.7%;
+  height: 100vh;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  box-shadow: 10px -50px 50px rgba(57, 55, 55, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    box-shadow: none;
+  }
+
+  &__header {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E4E4E4;
+
+    @media (max-width: 767px) {
+      padding: 16px 24px;
+
+      img {
+        width: 40px;
+      }
+    }
+  }
+
+  &__title {
+    margin-left: 18px;
+
+    h1 {
+      font-family: $font800;
+      font-size: 24px;
+      line-height: 33px;
+      color: $titleColor;
+
+      @media (max-width: 767px) {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 19px;
+      color: $titleColor;
+
+      @media (max-width: 767px) {
+        font-size: 10px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  &__navigation {
+    padding: 32px 16px 32px 24px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 767px) {
+      padding-top: 24px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__sale {
+    background: #FD9126;
+    border-radius: 40px;
+    padding: 10px 24px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFF;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+
+    @media (max-width: 1499px) {
+      padding: 10px 12px;
+    }
+    @media (max-width: 767px) {
+      display: none;
+
+      &.mobile-show {
+        display: flex;
+        margin: 0 auto;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: none;
+      width: 12px;
+      height: 12px;
+      position: relative;
+      margin-left: 10px;
+      top: -4px;
+      background: url('../img/sale-icon.svg') no-repeat center;
+      -webkit-animation-name: move-arrow;
+      animation-name: move-arrow;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count:infinite
+    }
+
+    &.active {
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  &__time {
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F;
+    text-align: right;
+    margin-left: auto;
+
+    @media (max-width: 1399px) {
+      display: none;
+    }
+    @media (max-width: 1199px) {
+      display: block;
+    }
+    @media (max-width: 767px) {
+      margin-left: 0;
+      margin-right: auto;
+      font-size: 14px;
+
+      &.mobile-hidden {
+        display: none;
+      }
+    }
+
+    span {
+      display: block;
+      font-size: 14px;
+      line-height: 17px;
+      color: #7B828E;
+
+      @media (max-width: 767px) {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__soc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(321.7deg, #EEEEF0 24.16%, #F7F7FF 84.43%);
+    box-shadow: inset -10px -10px 20px rgba(255, 255, 255, 0.5), inset 10px 10px 20px #E0E1E3, -4px -4px 8px rgba(255, 255, 255, 0.5), 6px 6px 6px rgba(218, 219, 221, 0.25), 8px 8px 30px #DADBDD, -6px -6px 20px #FCFDFF;
+    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #FFF;
+    margin-left: 32px;
+    transition: 0.3s;
+    flex-shrink: 0;
+
+    &:hover {
+      background: linear-gradient(49.24deg, #FC9025 20.87%, #D92E7B 72.97%, #A224BC 108.62%);
+      box-shadow: inset -10px -10px 20px #D92E7B, inset 10px 10px 20px #FD9126, -4px -4px 8px rgba(255, 255, 255, 0.5), 6px 6px 6px rgba(218, 219, 221, 0.25), 8px 8px 30px #DADBDD, -6px -6px 20px #FCFDFF;
+
+      svg path {
+        fill: #FFF;
+      }
+    }
+
+    @media (max-width: 1499px) {
+      margin-left: 24px;
+    }
+    @media (max-width: 767px) {
+      &.mobile-hidden {
+        display: none;
+      }
+    }
+  }
+
+  &__scroll {
+    flex-grow: 1;
+    overflow-y: auto;
+
+    @media (min-width: 1700px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__form {
+    overflow-x: hidden;
+  }
+
+  &__note {
+    font-size: 14px;
+    line-height: 19px;
+    color: $textColor;
+    margin: 169px 0 118px;
+
+    @media (max-width: 1499px) {
+      margin-top: 100px;
+    }
+    @media (max-width: 767px) {
+      margin: 60px 0 40px;
+    }
+  }
+}
+
+.panel-progress {
+  padding: 24px;
+  border-top: 1px solid #E4E4E4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    padding: 12px 0 0;
+  }
+
+  &__label {
+    font-size: 16px;
+    line-height: 22px;
+    color: $titleColor;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__value {
+    font-family: $font800;
+    font-size: 16px;
+    line-height: 22px;
+    color: $titleColor;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @media (max-width: 767px) {
+      display: flex;
+      align-items: center;
+      margin: 0 16px;
+      width: 100%;
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    height: 12px;
+    flex-shrink: 0;
+    background: #D9D9D9;
+    border-radius: 8px;
+    margin-top: 8px;
+    position: relative;
+
+    @media (max-width: 767px) {
+      margin-top: 20px;
+      border-radius: 0;
+    }
+
+    span {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      height: 12px;
+      background: #FD9126;
+      border-radius: 8px;
+      -webkit-animation: move 1.5s linear infinite;
+      animation: move 1.5s linear infinite;
+      background-image: linear-gradient(-45deg, hsla(0, 0%, 100%, .08) 25%, transparent 0, transparent 50%, hsla(0, 0%, 100%, .08) 0, hsla(0, 0%, 100%, .08) 75%, transparent 0, transparent);
+      z-index: 1;
+      background-size: 20px 20px;
+      transition: 0.3s;
+
+      @media (max-width: 767px) {
+        border-radius: 0;
+      }
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .panel__sale {
+    @media (max-width: 767px) {
+      display: flex;
+      margin-right: auto;
+      flex-shrink: 0;
+      padding: 8px 12px;
+      font-size: 10px;
+      line-height: 14px;
+
+      &:after {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .mobileNext {
+    @media (max-width: 767px) {
+      width: auto;
+      padding: 14px 26px;
+    }
+  }
+}
