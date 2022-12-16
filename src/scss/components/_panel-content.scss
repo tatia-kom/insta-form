@@ -32,6 +32,14 @@
       font-size: 14px;
       line-height: 19px;
     }
+
+    a {
+      color: #429DF0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__text--top_margin {
